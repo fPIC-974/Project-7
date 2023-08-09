@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: com.nnk.springboot.CurvePointTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.002 s <<< FAILURE! - in com.nnk.springboot.CurvePointTests
+curvePointTest  Time elapsed: 0.002 s  <<< ERROR!
+org.springframework.dao.InvalidDataAccessResourceUsageException: could not execute statement; SQL [n/a]
+	at com.nnk.springboot.CurvePointTests.curvePointTest(CurvePointTests.java:34)
+Caused by: org.hibernate.exception.SQLGrammarException: could not execute statement
+	at com.nnk.springboot.CurvePointTests.curvePointTest(CurvePointTests.java:34)
+Caused by: java.sql.SQLSyntaxErrorException: Unknown column 'as_of_date' in 'field list'
+	at com.nnk.springboot.CurvePointTests.curvePointTest(CurvePointTests.java:34)
+

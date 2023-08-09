@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: com.nnk.springboot.RuleTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.004 s <<< FAILURE! - in com.nnk.springboot.RuleTests
+ruleTest  Time elapsed: 0.004 s  <<< ERROR!
+org.springframework.dao.InvalidDataAccessResourceUsageException: could not execute statement; SQL [n/a]
+	at com.nnk.springboot.RuleTests.ruleTest(RuleTests.java:33)
+Caused by: org.hibernate.exception.SQLGrammarException: could not execute statement
+	at com.nnk.springboot.RuleTests.ruleTest(RuleTests.java:33)
+Caused by: java.sql.SQLSyntaxErrorException: Unknown column 'sql_part' in 'field list'
+	at com.nnk.springboot.RuleTests.ruleTest(RuleTests.java:33)
+

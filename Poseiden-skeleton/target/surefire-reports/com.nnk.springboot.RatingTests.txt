@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: com.nnk.springboot.RatingTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 2.119 s <<< FAILURE! - in com.nnk.springboot.RatingTests
+ratingTest  Time elapsed: 0.092 s  <<< ERROR!
+org.springframework.dao.InvalidDataAccessResourceUsageException: could not execute statement; SQL [n/a]
+	at com.nnk.springboot.RatingTests.ratingTest(RatingTests.java:33)
+Caused by: org.hibernate.exception.SQLGrammarException: could not execute statement
+	at com.nnk.springboot.RatingTests.ratingTest(RatingTests.java:33)
+Caused by: java.sql.SQLSyntaxErrorException: Unknown column 'fitch_rating' in 'field list'
+	at com.nnk.springboot.RatingTests.ratingTest(RatingTests.java:33)
+
