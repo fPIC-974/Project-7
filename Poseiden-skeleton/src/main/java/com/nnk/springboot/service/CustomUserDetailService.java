@@ -32,6 +32,11 @@ public class CustomUserDetailService implements UserDetailsService {
             }
         };*/
 
+        if (user == null) {
+            //logger.error("Invalid credentials");
+            throw new RuntimeException("Invalid credentials");
+        }
+
         GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(user.getRole());
 
         List<GrantedAuthority> roles = new ArrayList<>();

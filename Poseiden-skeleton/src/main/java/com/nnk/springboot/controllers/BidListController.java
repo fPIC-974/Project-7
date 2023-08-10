@@ -40,7 +40,7 @@ public class BidListController {
             if (Objects.equals(Objects.requireNonNull(result.getFieldError("bidQuantity")).getCode(), "typeMismatch")) {
                 model.addAttribute("numFieldError", "Invalid Number Format");
             } else {
-                model.addAttribute("numFiledError", result.getFieldError());
+                model.addAttribute("numFieldError", result.getFieldError("bidQuantity").getDefaultMessage());
             }
             return "bidList/add";
         }
@@ -66,6 +66,8 @@ public class BidListController {
         if (result.hasErrors()) {
             if (Objects.equals(Objects.requireNonNull(result.getFieldError("bidQuantity")).getCode(), "typeMismatch")) {
                 model.addAttribute("numFieldError", "Invalid Number Format");
+            } else {
+                model.addAttribute("numFieldError", result.getFieldError("bidQuantity").getDefaultMessage());
             }
             return "bidList/update";
         }
