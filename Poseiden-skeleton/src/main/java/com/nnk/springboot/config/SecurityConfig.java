@@ -37,7 +37,9 @@ public class SecurityConfig {
                 .anyRequest()
                 .authenticated()
                 .and().formLogin()
-                .defaultSuccessUrl("/bidList/list");
+                .defaultSuccessUrl("/bidList/list")
+                .and().logout().logoutUrl("/app-logout")
+                .permitAll();
         return httpSecurity.build();
     }
 

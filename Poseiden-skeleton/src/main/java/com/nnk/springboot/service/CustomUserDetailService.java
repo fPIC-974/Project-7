@@ -3,6 +3,8 @@ package com.nnk.springboot.service;
 import com.nnk.springboot.config.CustomUserDetail;
 import com.nnk.springboot.domain.User;
 import com.nnk.springboot.repositories.UserRepository;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,6 +17,7 @@ import java.util.List;
 
 @Service
 public class CustomUserDetailService implements UserDetailsService {
+    private static final Logger logger = LogManager.getLogger(CustomUserDetailService.class);
 
     private final UserRepository userRepository;
 
@@ -24,6 +27,8 @@ public class CustomUserDetailService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        logger.debug("loadUserByUsername(" + username + ")");
+
         User user = userRepository.findByUsername(username);
         /*GrantedAuthority grantedAuthority = new GrantedAuthority() {
             @Override
@@ -34,6 +39,7 @@ public class CustomUserDetailService implements UserDetailsService {
 
         if (user == null) {
             //logger.error("Invalid credentials");
+            logger.error("Invalid credentials");
             throw new RuntimeException("Invalid credentials");
         }
 
