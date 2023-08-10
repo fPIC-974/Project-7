@@ -29,7 +29,6 @@ public class Trade {
     )
     private String type;
     @Min(value = 0, message = "Positive value only")
-    @NotNull(message="Buy quantity is mandatory")
     private Double buyQuantity;
     private Double sellQuantity;
     private Double buyPrice;

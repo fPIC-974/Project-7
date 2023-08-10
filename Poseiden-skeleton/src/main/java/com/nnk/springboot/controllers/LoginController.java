@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.security.Principal;
+
 @Controller
 @RequestMapping("app")
 public class LoginController {
@@ -37,9 +39,10 @@ public class LoginController {
     }
 
     @GetMapping("error")
-    public ModelAndView error() {
+    public ModelAndView error(Principal principal) {
         ModelAndView mav = new ModelAndView();
         String errorMessage= "You are not authorized for the requested data.";
+        mav.addObject("user", principal.getName());
         mav.addObject("errorMsg", errorMessage);
         mav.setViewName("403");
         return mav;

@@ -36,33 +36,11 @@ public class SecurityConfig {
                 .requestMatchers("/user/delete/**").hasAuthority("ADMIN")
                 .anyRequest()
                 .authenticated()
-                .and().formLogin()
+                .and().exceptionHandling((exceptionHandling) -> exceptionHandling.accessDeniedPage("/app/error"))
+                .formLogin()
                 .defaultSuccessUrl("/bidList/list")
                 .and().logout().logoutUrl("/app-logout")
                 .permitAll();
-        return httpSecurity.build();
-    }
-
-    @Bean
-    public SecurityFilterChain bidFilterChain(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity
-                .csrf().disable()
-            .authorizeHttpRequests()
-//                .requestMatchers("/").permitAll()
-            .requestMatchers("/bidList/list").hasAuthority("USER")
-            .requestMatchers("/bidList/list").hasAuthority("ADMIN")
-            .requestMatchers(HttpMethod.POST, "/user/**").hasAuthority("ADMIN")
-            .requestMatchers("/bidList/add/**").hasAuthority("ADMIN")
-            .requestMatchers("/bidList/update/**").hasAuthority("ADMIN")
-            .requestMatchers("/bidList/validate").hasAuthority("ADMIN")
-            .requestMatchers("/bidList/delete/**").hasAuthority("ADMIN")
-            /*.requestMatchers("/user/update/**").hasRole("ADMIN")
-            .requestMatchers(HttpMethod.POST, "/user/**").hasRole("ADMIN")
-            .requestMatchers("/user/validate").hasRole("ADMIN")
-            .requestMatchers("/user/delete/**").hasRole("ADMIN")*/
-            .anyRequest()
-            .authenticated()
-            .and().formLogin();
         return httpSecurity.build();
     }
 
