@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.security.Principal;
+import java.util.Objects;
 
 
 @Controller
@@ -43,6 +44,12 @@ public class RatingController {
     public String validate(@Valid Rating rating, BindingResult result, Model model) {
         // TODO: check data valid and save to db, after saving return Rating list
         if (result.hasErrors()) {
+            if (Objects.equals(Objects.requireNonNull(result.getFieldError("orderNumber")).getCode(), "typeMismatch")) {
+                model.addAttribute("numFieldError", "Invalid Number Format");
+            } else {
+                model.addAttribute("numFieldError", result.getFieldError("orderNumber").getDefaultMessage());
+            }
+
             return "rating/add";
         }
 
@@ -65,6 +72,11 @@ public class RatingController {
                              BindingResult result, Model model) {
         // TODO: check required fields, if valid call service to update Rating and return Rating list
         if (result.hasErrors()) {
+            if (Objects.equals(Objects.requireNonNull(result.getFieldError("orderNumber")).getCode(), "typeMismatch")) {
+                model.addAttribute("numFieldError", "Invalid Number Format");
+            } else {
+                model.addAttribute("numFieldError", result.getFieldError("orderNumber").getDefaultMessage());
+            }
             return "rating/update";
         }
 
