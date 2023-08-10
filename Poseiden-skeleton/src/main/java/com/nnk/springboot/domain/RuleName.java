@@ -16,12 +16,16 @@ public class RuleName {
     @NotBlank(message = "Description is mandatory")
     private String description;
     @Column(length = 125)
+    @NotBlank(message = "JSON is mandatory")
     private String json;
     @Column(length = 512)
+    @NotBlank(message = "Template is mandatory")
     private String template;
     @Column(length = 125)
+    @NotBlank(message = "SQL String is mandatory")
     private String sqlStr;
     @Column(length = 125)
+    @NotBlank(message = "SQL Part is mandatory")
     private String sqlPart;
 
     public RuleName() { }
