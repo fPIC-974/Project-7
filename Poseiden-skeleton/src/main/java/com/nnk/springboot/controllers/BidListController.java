@@ -37,11 +37,7 @@ public class BidListController {
     @PostMapping("/bidList/validate")
     public String validate(@Valid BidList bid, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            if (Objects.equals(Objects.requireNonNull(result.getFieldError("bidQuantity")).getCode(), "typeMismatch")) {
-                model.addAttribute("numFieldError", "Invalid Number Format");
-            } else {
-                model.addAttribute("numFieldError", result.getFieldError("bidQuantity").getDefaultMessage());
-            }
+            System.out.println(result.getFieldError("bidQuantity"));
             return "bidList/add";
         }
 
@@ -64,11 +60,6 @@ public class BidListController {
                              BindingResult result, Model model) {
         // TODO: check required fields, if valid call service to update Bid and return list Bid
         if (result.hasErrors()) {
-            if (Objects.equals(Objects.requireNonNull(result.getFieldError("bidQuantity")).getCode(), "typeMismatch")) {
-                model.addAttribute("numFieldError", "Invalid Number Format");
-            } else {
-                model.addAttribute("numFieldError", result.getFieldError("bidQuantity").getDefaultMessage());
-            }
             return "bidList/update";
         }
 

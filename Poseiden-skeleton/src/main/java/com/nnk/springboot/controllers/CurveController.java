@@ -42,12 +42,6 @@ public class CurveController {
     public String validate(@Valid CurvePoint curvePoint, BindingResult result, Model model) {
         // TODO: check data valid and save to db, after saving return Curve list
         if (result.hasErrors()) {
-            if (Objects.equals(Objects.requireNonNull(result.getFieldError("value")).getCode(), "typeMismatch")) {
-                model.addAttribute("numFieldError", "Invalid Number Format");
-            } else {
-                model.addAttribute("numFieldError", result.getFieldError("value").getDefaultMessage());
-
-            }
             return "curvePoint/add";
         }
 
@@ -70,12 +64,6 @@ public class CurveController {
                              BindingResult result, Model model) {
         // TODO: check required fields, if valid call service to update Curve and return Curve list
         if (result.hasErrors()) {
-            if (Objects.equals(Objects.requireNonNull(result.getFieldError("value")).getCode(), "typeMismatch")) {
-                model.addAttribute("numFieldError", "Invalid Number Format");
-            } else {
-                model.addAttribute("numFieldError", result.getFieldError("value").getDefaultMessage());
-
-            }
             return "curvePoint/update";
         }
 
