@@ -37,7 +37,6 @@ public class BidListController {
     @PostMapping("/bidList/validate")
     public String validate(@Valid BidList bid, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            System.out.println(result.getFieldError("bidQuantity"));
             return "bidList/add";
         }
 
