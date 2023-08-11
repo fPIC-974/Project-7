@@ -22,6 +22,14 @@ public class SecurityConfig {
         this.customUserDetailService = customUserDetailService;
     }
 
+    /**
+     * Filter access to application site, based on user privileges
+     *  - Users with ADMIN role will have access to user management
+     *  - All users have access to other site pages, as long as they are authenticated
+     * @param httpSecurity http request with security enabled
+     * @return object built
+     * @throws Exception
+     */
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
@@ -44,6 +52,10 @@ public class SecurityConfig {
         return httpSecurity.build();
     }
 
+    /**
+     * Encode password
+     * @return encrypted password
+     */
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();

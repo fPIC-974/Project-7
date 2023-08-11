@@ -25,6 +25,12 @@ public class CustomUserDetailService implements UserDetailsService {
         this.userRepository = userRepository;
     }
 
+    /**
+     * Loads user in application context
+     * @param username the user to be loaded
+     * @return UserDetails for the user, with privileges
+     * @throws UsernameNotFoundException if username not found in database
+     */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         logger.debug("loadUserByUsername(" + username + ")");

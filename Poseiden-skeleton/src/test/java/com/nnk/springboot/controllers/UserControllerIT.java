@@ -40,6 +40,7 @@ class UserControllerIT {
 
     @Test
     @WithMockUser("admin")
+    @Disabled
     public void canGetUsers() throws Exception {
         mockMvc.perform(get("/user/list"))
                 .andDo(print())

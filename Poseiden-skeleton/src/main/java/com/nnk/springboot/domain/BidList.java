@@ -248,11 +248,4 @@ public class BidList {
     public void setSide(String side) {
         this.side = side;
     }
-
-    /*public String toString() {
-        return "{" +
-                "\"account\":" + this.account + "\"," +
-                "\"type\":" + this.type + "\"," +
-                "\"bidQuantity\":" + this.bidQuantity + "}";
-    }*/
 }
