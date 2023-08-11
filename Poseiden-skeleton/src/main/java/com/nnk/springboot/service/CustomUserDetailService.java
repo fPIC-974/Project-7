@@ -30,15 +30,8 @@ public class CustomUserDetailService implements UserDetailsService {
         logger.debug("loadUserByUsername(" + username + ")");
 
         User user = userRepository.findByUsername(username);
-        /*GrantedAuthority grantedAuthority = new GrantedAuthority() {
-            @Override
-            public String getAuthority() {
-                return user.getRole();
-            }
-        };*/
 
         if (user == null) {
-            //logger.error("Invalid credentials");
             logger.error("Invalid credentials");
             throw new RuntimeException("Invalid credentials");
         }
@@ -48,11 +41,6 @@ public class CustomUserDetailService implements UserDetailsService {
         List<GrantedAuthority> roles = new ArrayList<>();
         roles.add(grantedAuthority);
 
-        // FIXME
-        // If username = test | Test -> invalid authentication
-        // If username = toto -> exception user is null
-//        System.out.println(roles.get(0).getAuthority());
         return new CustomUserDetail(user.getUsername(), user.getPassword(), roles);
-//        return new CustomUserDetail("toto", "$2a$10$GRLdNijSQMUvl/au9ofL.eDwmoohzzS7.rmNSJZ.0FxO/BTk76klW", new ArrayList<>());
     }
 }
