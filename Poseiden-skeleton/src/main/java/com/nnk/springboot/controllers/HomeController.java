@@ -15,7 +15,7 @@ public class HomeController
 	{
 		model.addAttribute("user", principal.getName());
 
-		return "home";
+		return "redirect:/bidList/list";
 	}
 
 	@RequestMapping("/admin/home")
